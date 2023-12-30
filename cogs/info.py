@@ -21,5 +21,38 @@ class Info(commands.Cog):
         await ctx.response.send_message(embed=embed)
 
 
+    @app_commands.command(name="help", description="Help with the Zephyr bot")
+    async def help(self, ctx: discord.Interaction):
+        embed = discord.Embed(
+            title="❓ Help",
+            description="📖 Zephyr is a Discord bot created for the Capital Gaming server",
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text="Use /help to see a list of commands")
+        await ctx.response.send_message(embed=embed)
+
+
+    @app_commands.command(name="invite", description="Invite the Zephyr bot")
+    async def invite(self, ctx: discord.Interaction):
+        embed = discord.Embed(
+            title="📨 Invite",
+            description="📩 Zephyr is a Discord bot created for the Capital Gaming server",
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text="Use /help to see a list of commands")
+        await ctx.response.send_message(embed=embed)
+
+
+    @app_commands.command(name="ping", description="Ping the Zephyr bot")
+    async def ping(self, ctx: discord.Interaction):
+        embed = discord.Embed(
+            title="🌐 Ping",
+            description=f"**Latency:** `{round(self.bot.latency * 1000)}ms`",
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text="Use /help to see a list of commands")
+        await ctx.response.send_message(embed=embed)
+
+
 async def setup(bot: commands.Bot):
     await bot.add_cog(Info(bot))

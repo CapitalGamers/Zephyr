@@ -56,6 +56,16 @@ class Fun(commands.Cog):
             embed.set_footer(text="Use /help to see a list of commands")
             await ctx.response.send_message(embed=embed)
 
+    @app_commands.command(name="coinflip", description="Flips a coin")
+    async def coinflip(self, ctx: discord.Interaction):
+        embed = discord.Embed(
+            title="Coinflip",
+            description=f"You flipped a {random.choice(['heads', 'tails'])}!",
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text="Use /help to see a list of commands")
+        await ctx.response.send_message(embed=embed)
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Fun(bot))
