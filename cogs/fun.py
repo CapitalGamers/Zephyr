@@ -56,6 +56,7 @@ class Fun(commands.Cog):
             embed.set_footer(text="Use /help to see a list of commands")
             await ctx.response.send_message(embed=embed)
 
+
     @app_commands.command(name="coinflip", description="Flips a coin")
     async def coinflip(self, ctx: discord.Interaction):
         embed = discord.Embed(
@@ -65,6 +66,24 @@ class Fun(commands.Cog):
         )
         embed.set_footer(text="Use /help to see a list of commands")
         await ctx.response.send_message(embed=embed)
+
+
+    @app_commands.command(name="8ball", description="Ask the magic 8ball a question")
+    @app_commands.describe(question="The question to ask the 8ball")
+    async def eightball(self, ctx: discord.Interaction, question: str):
+        embed = discord.Embed(
+            title="8ball",
+            description=f"Question: {question}\nAnswer: {random.choice(['Yes', 'No', 'Maybe'])}",
+            color=discord.Color.blurple()
+        )
+        embed.set_footer(text="Use /help to see a list of commands")
+        await ctx.response.send_message(embed=embed)
+
+
+    @app_commands.command(name="say", description="Make the bot say something")
+    @app_commands.describe(message="The message to say")
+    async def say(self, ctx: discord.Interaction, message: str):
+        await ctx.response.send_message(message)
 
 
 async def setup(bot: commands.Bot):
