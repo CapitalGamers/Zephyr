@@ -14,7 +14,7 @@ class Info(commands.Cog):
     async def about(self, ctx: discord.Interaction):
         embed = discord.Embed(
             title="⚡ About Zephyr",
-            description="✨ Zephyr is a Discord bot created for the Capital Gaming server",
+            description="✨ Zephyr is a Discord bot created for the Capital Gaming server. This bot helps us manage things like moderation, info, FAQ, and some fun things.",
             color=discord.Color.blurple()
         )
         embed.set_footer(text="Use /help to see a list of commands")
