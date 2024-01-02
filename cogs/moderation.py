@@ -5,7 +5,6 @@ from discord.ext import commands
 
 
 class Moderation(commands.Cog):
-
     def __init__(self, bot):
         self.bot = bot
 
@@ -13,7 +12,7 @@ class Moderation(commands.Cog):
         embed = discord.Embed(
             title="Incomplete Command",
             description="This command is undergoing development.",
-            color=discord.Color.red()
+            color=discord.Color.red(),
         )
         embed.set_footer(text="Use /help to see a list of commands")
         await ctx.response.send_message(embed=embed)
@@ -34,7 +33,9 @@ class Moderation(commands.Cog):
     async def timeout_add(self, ctx: discord.Interaction):
         await self.send_incomplete_command_message(ctx)
 
-    @app_commands.command(name="timeout_remove", description="Remove a timeout from a member")
+    @app_commands.command(
+        name="timeout_remove", description="Remove a timeout from a member"
+    )
     async def timeout_remove(self, ctx: discord.Interaction):
         await self.send_incomplete_command_message(ctx)
 

@@ -13,7 +13,7 @@ class Config:
     VERSION = "1.0 Dev"
 
     # The bot's developers:
-    DEVELOPERS = "EpicSprout, Timkosh"
+    DEVELOPERS = "EpicSprout, Dimkauzh"
 
     # The bot's developer's IDs:
     DEVELOPER_IDS = [492377608517058580, 1168798734650449992]
