@@ -1,0 +1,16 @@
+[project]
+name = "Zephyr"
+version = "0.1.0"
+description = "A small lightweight discord bot for moderation, utility and fun."
+authors = [{ name = "EpicSprout ad Dimkauzh", email = "uzhdimka@gmail.com" }]
+dependencies = ["discord-py", "python-dotenv", "aiohttp", "jishaku", "cogwatch"]
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pdm]
+package-type = "application"
+
+[tool.pdm.scripts]
+dev = "python3 main.py dev"
+deploy = "python3 main.py"

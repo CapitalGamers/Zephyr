@@ -4,8 +4,6 @@ import aiohttp
 
 import discord
 from discord.ext import commands
-
-# For hot reloading
 from cogwatch import watch
 
 from config import Config as cfg
@@ -13,7 +11,11 @@ from config import Config as cfg
 import dotenv
 
 dotenv.load_dotenv()
-token = str(os.getenv("TOKEN"))
+
+if sys.argv[0] == "dev":
+    token = str(os.getenv("DEV_TOKEN"))
+else:
+    token = str(os.getenv("TOKEN"))
 
 
 intents = discord.Intents.all()
@@ -21,16 +23,13 @@ intents = discord.Intents.all()
 
 class Zephyr(commands.Bot):
     def __init__(self):
-
         super().__init__(
             command_prefix=cfg.PREFIX,
             intents=intents,
             allowed_mentions=discord.AllowedMentions(everyone=False),
         )
 
-
     async def setup_hook(self):
-
         cogs = [
             'fun',
             'info',
@@ -39,7 +38,7 @@ class Zephyr(commands.Bot):
         ]
 
         for cog in cogs:
-            await self.load_extension(f'cogs.{cog}')
+            await self.load_extension(f'src.{cog}')
             print(f'\n+ Loaded {cog}')
 
         await self.load_extension("jishaku")
@@ -47,7 +46,7 @@ class Zephyr(commands.Bot):
 
         self.aiohttp_session = aiohttp.ClientSession()
 
-    @watch(path='cogs', preload=True)
+    @watch(path='src', preload=True)
     async def on_ready(self):
         print("\n________________________________________________")
         print(f"\n{bot.user} is ready!")

@@ -1,5 +1,4 @@
 class Config:
-
     # The Bot's application id:
     APP_ID = 1190673900162527263
 
@@ -10,7 +9,7 @@ class Config:
     NAME = "Zephyr"
 
     # The bot's current version:
-    VERSION = "1.0 Dev"
+    VERSION = "0.1.0 Dev"
 
     # The bot's developers:
     DEVELOPERS = "EpicSprout, Dimkauzh"

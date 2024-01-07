@@ -2,3 +2,6 @@
 **.pyc
 __pycache__
 cogs/__pycache__
+.pdm-python
+pdm.lock
+.venv
