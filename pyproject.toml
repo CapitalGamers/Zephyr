@@ -12,5 +12,4 @@ license = { text = "MIT" }
 package-type = "application"
 
 [tool.pdm.scripts]
-dev = "python3 main.py dev"
-deploy = "python3 main.py"
+bot = "python3 main.py"

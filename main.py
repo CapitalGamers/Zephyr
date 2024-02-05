@@ -12,10 +12,8 @@ import dotenv
 
 dotenv.load_dotenv()
 
-if sys.argv[0] == "dev":
-    token = str(os.getenv("DEV_TOKEN"))
-else:
-    token = str(os.getenv("TOKEN"))
+
+token = str(os.getenv("TOKEN"))
 
 
 intents = discord.Intents.all()
@@ -30,32 +28,34 @@ class Zephyr(commands.Bot):
         )
 
     async def setup_hook(self):
-        cogs = [
-            'fun',
-            'info',
-            'moderation',
-            'utility'
-        ]
+        cogs = ["fun", "info", "moderation", "utility"]
 
         for cog in cogs:
-            await self.load_extension(f'src.{cog}')
-            print(f'\n+ Loaded {cog}')
+            await self.load_extension(f"src.{cog}")
+            print(f"\n+ Loaded {cog}")
 
         await self.load_extension("jishaku")
         print("\n+ Loaded jishaku\n")
 
         self.aiohttp_session = aiohttp.ClientSession()
 
-    @watch(path='src', preload=True)
+    @watch(path="src", preload=True)
     async def on_ready(self):
         print("\n________________________________________________")
         print(f"\n{bot.user} is ready!")
         print(f"Zephyr v{cfg.VERSION}")
-        print(f"\nUsing Discord.py {discord.__version__} on Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}")
+        print(
+            f"\nUsing Discord.py {discord.__version__} on Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
+        )
         print(f"\nRunning on {sys.platform.title()}\n")
         print("________________________________________________\n\n")
 
-        await self.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name="you struggle to use me"))
+        await self.change_presence(
+            status=discord.Status.idle,
+            activity=discord.Activity(
+                type=discord.ActivityType.watching, name="using it"
+            ),
+        )
 
 
 bot = Zephyr()
